@@ -1,0 +1,19 @@
+---
+applications:
+- name: hello-world-rest-api
+  stack: cflinuxfs3
+  path: target/hello-world-rest-api.jar
+  routes:
+  - route: hello-world-rest-api-wise-pangolin-ry.cfapps.us10.hana.ondemand.com
+    protocol: http1
+  processes:
+  - type: task
+    instances: 0
+    memory: 1024M
+    disk_quota: 1024M
+    health-check-type: process
+  - type: web
+    instances: 1
+    memory: 1024M
+    disk_quota: 1024M
+    health-check-type: port
